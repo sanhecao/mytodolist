@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean":"rimraf dist",
+    "clean": "rimraf dist",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
-    "build":"npm run clean && npm run build:client",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js"
+    "build": "npm run clean && npm run build:client",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
+    "pra": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,8 @@
   "homepage": "https://github.com/sanhecao/mytodolist#readme",
   "dependencies": {
     "@babel/core": "^7.9.0",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.1.6"
   },
   "devDependencies": {
     "autoprefixer": "^9.7.4",

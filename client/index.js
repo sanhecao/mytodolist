@@ -6,6 +6,7 @@ import './assets/styles/style.styl'
 import './assets/styles/global.styl';
 
 const root = document.createElement('div');
+
 document.body.appendChild(root);
 
 new Vue({

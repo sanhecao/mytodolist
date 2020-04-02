@@ -1,7 +1,8 @@
 const path = require('path');
-const vueLoaderOption =require('./vue-loader.config');
+const createvueLoaderOption =require('./vue-loader.config');
 const isDev = process.env.NODE_ENV === 'development';
 const config = {
+  mode:process.env.NODE_ENV || 'production',
   target: 'web',
   //入口， __dirname 是当前文件所在目录
   entry: path.join(__dirname, '../client/index.js'),
@@ -14,7 +15,8 @@ const config = {
   module: {
     rules: [{
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: createvueLoaderOption(isDev),
       },      
       {
         test: /\.jsx$/,
@@ -36,7 +38,23 @@ const config = {
             //outputPath: 'assets/img/'
           }
         }]
-      }
+      },
+       {
+         test: /\.css$/,
+         use: [
+           'vue-style-loader',
+           {
+             loader: 'css-loader',
+             options: {
+               // 开启 CSS Modules
+               modules:{
+               // 自定义生成的类名
+               localIdentName: '[name]_[hash:base64:5]'}
+             }
+           }
+         ]
+       }
+    
     ]
   },
   optimization: {
@@ -45,7 +63,8 @@ const config = {
         // exclude `my-excluded-chunk`
         return chunk.name !== 'my-excluded-chunk';
       }
-    }
+    },
+    runtimeChunk:true
   }
 }
 module.exports = config

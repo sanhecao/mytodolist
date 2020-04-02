@@ -49,7 +49,8 @@ if (isDev) {
           test: /\.styl/,
             use: [
               'vue-style-loader',
-              'css-loader',
+             'css-loader',
+            
               {
                 loader: 'postcss-loader',
                 options: {
@@ -62,8 +63,8 @@ if (isDev) {
       ]
     },
     plugins: defaultPluins.concat([
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoEmitOnErrorsPlugin()
+      new webpack.HotModuleReplacementPlugin()
+     //wevpack弃用 new webpack.NoEmitOnErrorsPlugin()
     ])
   })
 
